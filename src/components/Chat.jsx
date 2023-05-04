@@ -10,7 +10,7 @@ const Chat = (props) => {
 
   useEffect(() => {
     //need a query to listen to 
-    const queryMessages = query(messageRef, where("room", "==", room, orderBy("createdAt")));
+    const queryMessages = query(messageRef, where("room", "==", room),  orderBy('createdAt'));
     //subscribing to a change event in firestore
     const unsubscribe = onSnapshot(queryMessages, (snapShot) => {
       let messages = [];
