@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {addDoc, collection, onSnapshot, query, serverTimestamp, where} from 'firebase/firestore';
+import {addDoc, collection, onSnapshot, orderBy, query, serverTimestamp, where} from 'firebase/firestore';
 import { auth, db } from '../config/firebaseConfig';
 
 const Chat = (props) => {
@@ -10,7 +10,7 @@ const Chat = (props) => {
 
   useEffect(() => {
     //need a query to listen to 
-    const queryMessages = query(messageRef, where("room", "==", room));
+    const queryMessages = query(messageRef, where("room", "==", room, orderBy("createdAt")));
     //subscribing to a change event in firestore
     const unsubscribe = onSnapshot(queryMessages, (snapShot) => {
       let messages = [];
