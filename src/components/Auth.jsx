@@ -14,7 +14,7 @@ const Auth = (props) => {
       cookies.set("auth-token", result.user.refreshToken);
       setIsAuth(result.user.refreshToken);
     } catch (err) {
-      console.log("sign in error", err);
+      console.error("sign in error", err);
     }
   };
   return (
